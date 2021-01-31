@@ -19,6 +19,18 @@ class Car():
     def __str__(self):
         return "__str__ override"
 
+# inherit(상속)
+class Convertible(Car):
+
+    def __init__(self, **kwargs):
+        # super() : 부모 class를 호출함
+        # 부모의 init을 호출함으로써 부모의 init과 자식만의 init을 둘다 가지게 됨
+        super().__init__(**kwargs)
+        self.time = kwargs.get("time", 10)
+
+    def take_off(self):
+        return "take off"
+
 porche = Car(color = "blue", price = "5000")
 porche.carMethod()
 
@@ -30,3 +42,6 @@ print(porche.color, porche.price)
 
 benz = Car()
 print(benz.color, benz.price)
+
+bmw = Convertible()
+print(bmw.take_off())
